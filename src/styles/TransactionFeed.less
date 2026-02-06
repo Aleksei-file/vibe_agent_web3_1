@@ -1,0 +1,145 @@
+@text-primary: #1a202c;
+@text-secondary: #718096;
+@border-color: #e2e8f0;
+@bg-light: #f7fafc;
+@success-color: #48bb78;
+@warning-color: #f6ad55;
+@danger-color: #f56565;
+
+.transaction-feed {
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: @text-primary;
+    font-weight: 600;
+  }
+
+  .transactions-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: @bg-light;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: @border-color;
+      border-radius: 10px;
+
+      &:hover {
+        background: #cbd5e0;
+      }
+    }
+  }
+
+  .transaction-item {
+    display: grid;
+    grid-template-columns: 100px 1fr 150px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: @bg-light;
+    border: 1px solid @border-color;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    &.success {
+      border-left-color: @success-color;
+    }
+
+    &.pending {
+      border-left-color: @warning-color;
+      opacity: 0.7;
+    }
+
+    &.failed {
+      border-left-color: @danger-color;
+      opacity: 0.7;
+    }
+
+    .tx-left {
+      .tx-type {
+        font-weight: 600;
+        color: @text-primary;
+        font-size: 0.95rem;
+      }
+
+      .tx-time {
+        font-size: 0.85rem;
+        color: @text-secondary;
+        margin-top: 0.25rem;
+      }
+    }
+
+    .tx-center {
+      .tx-hash {
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        color: @text-secondary;
+        word-break: break-all;
+      }
+    }
+
+    .tx-right {
+      text-align: right;
+
+      .tx-value {
+        font-weight: 600;
+        color: @text-primary;
+        font-size: 1rem;
+      }
+
+      .tx-status {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 0.25rem;
+        text-transform: capitalize;
+
+        &.success {
+          color: @success-color;
+        }
+
+        &.pending {
+          color: @warning-color;
+        }
+
+        &.failed {
+          color: @danger-color;
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: @text-secondary;
+    font-style: italic;
+  }
+}
+
+@media (max-width: 768px) {
+  .transaction-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+    .tx-right {
+      text-align: left;
+    }
+  }
+}

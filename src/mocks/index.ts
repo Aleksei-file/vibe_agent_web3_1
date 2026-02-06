@@ -1,0 +1,75 @@
+import type { Transaction, Asset } from '../types';
+
+export const mockTransactions: Transaction[] = [
+  {
+    id: '1',
+    hash: '0x1234567890abcdef',
+    from: '0x1234567890123456789012345678901234567890',
+    to: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+    value: '5.5',
+    type: 'stake',
+    timestamp: Date.now() - 3600000,
+    status: 'success',
+    gasUsed: '0.005',
+  },
+  {
+    id: '2',
+    hash: '0xfedcba0987654321',
+    from: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+    to: '0x1234567890123456789012345678901234567890',
+    value: '2.3',
+    type: 'receive',
+    timestamp: Date.now() - 7200000,
+    status: 'success',
+    gasUsed: '0.003',
+  },
+  {
+    id: '3',
+    hash: '0xabcdef1234567890',
+    from: '0x1234567890123456789012345678901234567890',
+    to: '0x9876543210987654321098765432109876543210',
+    value: '10.0',
+    type: 'send',
+    timestamp: Date.now() - 86400000,
+    status: 'success',
+    gasUsed: '0.002',
+  },
+  {
+    id: '4',
+    hash: '0x7890abcdef123456',
+    from: '0x1234567890123456789012345678901234567890',
+    to: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+    value: '3.2',
+    type: 'unstake',
+    timestamp: Date.now() - 172800000,
+    status: 'success',
+    gasUsed: '0.004',
+  },
+];
+
+export const mockAssets: Asset[] = [
+  {
+    id: '1',
+    name: 'Ethereum',
+    symbol: 'ETH',
+    balance: '5.5',
+    usdValue: '$11,000',
+    stakedAmount: '3.2',
+    apy: 3.5,
+  },
+  {
+    id: '2',
+    name: 'USDC',
+    symbol: 'USDC',
+    balance: '10,000',
+    usdValue: '$10,000',
+  },
+  {
+    id: '3',
+    name: 'DAI',
+    symbol: 'DAI',
+    balance: '5,000',
+    usdValue: '$5,000',
+    apy: 4.2,
+  },
+];

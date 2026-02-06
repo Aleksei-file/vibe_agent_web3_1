@@ -1,0 +1,148 @@
+@primary-color: #667eea;
+@success-color: #48bb78;
+@text-primary: #1a202c;
+@text-secondary: #718096;
+@border-color: #e2e8f0;
+@bg-light: #f7fafc;
+
+.yield-farming {
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: @text-primary;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: @text-primary;
+    font-weight: 500;
+  }
+
+  .assets-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .asset-card {
+    padding: 1rem;
+    background: @bg-light;
+    border: 2px solid @border-color;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: @primary-color;
+      background: #f0f4ff;
+    }
+
+    &.selected {
+      border-color: @primary-color;
+      background: #f0f4ff;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .asset-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      .symbol {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: @text-primary;
+      }
+
+      .apy {
+        background: @success-color;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    .asset-balance {
+      color: @text-secondary;
+      font-size: 0.95rem;
+    }
+
+    .staked {
+      font-size: 0.85rem;
+      color: @primary-color;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+  }
+
+  .farming-form {
+    border-top: 1px solid @border-color;
+    padding-top: 1rem;
+
+    .amount-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid @border-color;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: @primary-color;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    .approve-btn {
+      background: @primary-color;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background: #5568d3;
+      }
+    }
+
+    .deposit-btn {
+      background: @success-color;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background: #38a169;
+      }
+    }
+  }
+}
