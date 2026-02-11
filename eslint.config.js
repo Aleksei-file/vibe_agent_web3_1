@@ -6,6 +6,10 @@ import reactHooks from 'eslint-plugin-react-hooks'
 const tsProjects = ['./tsconfig.json', './tsconfig.node.json']
 
 export default [
+  // Ignore build output and dependencies
+  {
+    ignores: ['dist/**', 'node_modules/**'],
+  },
   // TypeScript files: enable the TS parser with project references
   {
     files: ['**/*.ts', '**/*.tsx'],
