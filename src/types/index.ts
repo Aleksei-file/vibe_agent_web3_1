@@ -1,3 +1,4 @@
+export type Theme = 'light' | 'dark' | 'sepia';
 export interface Transaction {
   id: string;
   hash: string;

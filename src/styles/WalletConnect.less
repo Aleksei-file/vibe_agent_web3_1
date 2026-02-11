@@ -1,4 +1,4 @@
-@primary-color: #667eea;
+@import './variables.less';
 
 .wallet-connect {
   .connect-btn,
@@ -14,7 +14,7 @@
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     &:disabled {
@@ -24,20 +24,12 @@
   }
 
   .connect-btn {
-    background: white;
-    color: @primary-color;
-
-    &:hover:not(:disabled) {
-      background: #f0f4ff;
-    }
+    background: var(--connect-button-bg);
+    color: var(--primary-bg-color);
   }
 
   .disconnect-btn {
-    background: rgba(245, 101, 101, 0.8);
-    color: white;
-
-    &:hover {
-      background: rgba(245, 101, 101, 1);
-    }
+    background: var(--danger-color);
+    color: var(--text-contrast);
   }
 }

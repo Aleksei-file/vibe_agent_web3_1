@@ -1,16 +1,10 @@
-@text-primary: #1a202c;
-@text-secondary: #718096;
-@border-color: #e2e8f0;
-@bg-light: #f7fafc;
-@success-color: #48bb78;
-@warning-color: #f6ad55;
-@danger-color: #f56565;
+@import 'variables.less';
 
 .transaction-feed {
   h3 {
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
-    color: @text-primary;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
@@ -27,16 +21,16 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: @bg-light;
+      background: var(--bg-light);
       border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: @border-color;
+      background: var(--scrollbar-bg-color);
       border-radius: 10px;
 
       &:hover {
-        background: #cbd5e0;
+        background: var(--scrollbar-bg-color-hovered);
       }
     }
   }
@@ -47,41 +41,41 @@
     gap: 1rem;
     align-items: center;
     padding: 1rem;
-    background: @bg-light;
-    border: 1px solid @border-color;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     border-left: 4px solid transparent;
     transition: all 0.3s ease;
 
     &:hover {
-      background: white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      background: var(--bg-light-hovered);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     &.success {
-      border-left-color: @success-color;
+      border-left-color: var(--success-color);
     }
 
     &.pending {
-      border-left-color: @warning-color;
+      border-left-color: var(--warning-color);
       opacity: 0.7;
     }
 
     &.failed {
-      border-left-color: @danger-color;
+      border-left-color: var(--danger-color);
       opacity: 0.7;
     }
 
     .tx-left {
       .tx-type {
         font-weight: 600;
-        color: @text-primary;
+        color: var(--text-primary);
         font-size: 0.95rem;
       }
 
       .tx-time {
         font-size: 0.85rem;
-        color: @text-secondary;
+        color: var(--text-secondary);
         margin-top: 0.25rem;
       }
     }
@@ -90,7 +84,7 @@
       .tx-hash {
         font-family: 'Courier New', monospace;
         font-size: 0.9rem;
-        color: @text-secondary;
+        color: var(--text-secondary);
         word-break: break-all;
       }
     }
@@ -100,7 +94,7 @@
 
       .tx-value {
         font-weight: 600;
-        color: @text-primary;
+        color: var(--text-primary);
         font-size: 1rem;
       }
 
@@ -111,15 +105,15 @@
         text-transform: capitalize;
 
         &.success {
-          color: @success-color;
+          color: var(--success-color);
         }
 
         &.pending {
-          color: @warning-color;
+          color: var(--warning-color);
         }
 
         &.failed {
-          color: @danger-color;
+          color: var(--danger-color);
         }
       }
     }
@@ -128,7 +122,7 @@
   .empty-state {
     text-align: center;
     padding: 2rem 1rem;
-    color: @text-secondary;
+    color: var(--text-secondary);
     font-style: italic;
   }
 }

@@ -1,22 +1,17 @@
-@primary-color: #667eea;
-@success-color: #48bb78;
-@text-primary: #1a202c;
-@text-secondary: #718096;
-@border-color: #e2e8f0;
-@bg-light: #f7fafc;
+@import './variables.less';
 
 .yield-farming {
   h3 {
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
-    color: @text-primary;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
   h4 {
     font-size: 1.1rem;
     margin-bottom: 1rem;
-    color: @text-primary;
+    color: var(--text-primary);
     font-weight: 500;
   }
 
@@ -29,21 +24,20 @@
 
   .asset-card {
     padding: 1rem;
-    background: @bg-light;
-    border: 2px solid @border-color;
+    background: var(--bg-light);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
-      border-color: @primary-color;
-      background: #f0f4ff;
+      border-color: var(--primary-color);
     }
 
     &.selected {
-      border-color: @primary-color;
-      background: #f0f4ff;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      border-color: var(--primary-color);
+      background: var(--bg-light);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
     }
 
     .asset-header {
@@ -55,12 +49,12 @@
       .symbol {
         font-weight: 600;
         font-size: 1.1rem;
-        color: @text-primary;
+        color: var(--text-primary);
       }
 
       .apy {
-        background: @success-color;
-        color: white;
+        background: var(--success-color);
+        color: var(--text-contrast);
         padding: 0.25rem 0.75rem;
         border-radius: 20px;
         font-size: 0.8rem;
@@ -69,26 +63,26 @@
     }
 
     .asset-balance {
-      color: @text-secondary;
+      color: var(--text-secondary);
       font-size: 0.95rem;
     }
 
     .staked {
       font-size: 0.85rem;
-      color: @primary-color;
+      color: var(--primary-color);
       margin-top: 0.5rem;
       font-weight: 500;
     }
   }
 
   .farming-form {
-    border-top: 1px solid @border-color;
+    border-top: 1px solid var(--border-color);
     padding-top: 1rem;
 
     .amount-input {
       width: 100%;
       padding: 0.75rem;
-      border: 1px solid @border-color;
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       font-size: 1rem;
       margin-bottom: 1rem;
@@ -96,8 +90,8 @@
 
       &:focus {
         outline: none;
-        border-color: @primary-color;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -128,21 +122,13 @@
     }
 
     .approve-btn {
-      background: @primary-color;
-      color: white;
-
-      &:hover:not(:disabled) {
-        background: #5568d3;
-      }
+      background: var(--primary-bg-color);
+      color: var(--text-contrast);
     }
 
     .deposit-btn {
-      background: @success-color;
-      color: white;
-
-      &:hover:not(:disabled) {
-        background: #38a169;
-      }
+      background: var(--success-color);
+      color: var(--text-contrast);
     }
   }
 }

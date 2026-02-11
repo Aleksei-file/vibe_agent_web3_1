@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { WalletConnect } from './components/WalletConnect';
+import ThemeToggle from './components/ThemeToggle';
 import { AccountOverview } from './components/AccountOverview';
 import { YieldFarming } from './components/YieldFarming';
 import { TransactionFeed } from './components/TransactionFeed';
@@ -18,10 +19,13 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>🚀 DeFi Insight Dashboard</h1>
-        <WalletConnect
-          onConnect={handleConnect}
-          isConnected={account?.isConnected ?? false}
-        />
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <WalletConnect
+            onConnect={handleConnect}
+            isConnected={account?.isConnected ?? false}
+          />
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className="app-main">
