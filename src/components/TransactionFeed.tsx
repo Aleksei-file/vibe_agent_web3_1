@@ -57,15 +57,23 @@ export const TransactionFeed = ({
                 className={`${styles['transaction-item']} ${styles[getStatusColor(tx.status)] ?? ''}`}
               >
                 <div className={styles['tx-left']}>
-                  <div className={styles['tx-type']}>{getTypeLabel(tx.type)}</div>
-                  <div className={styles['tx-time']}>{formatTime(tx.timestamp)}</div>
+                  <div className={styles['tx-type']}>
+                    {getTypeLabel(tx.type)}
+                  </div>
+                  <div className={styles['tx-time']}>
+                    {formatTime(tx.timestamp)}
+                  </div>
                 </div>
                 <div className={styles['tx-center']}>
-                  <div className={styles['tx-hash']}>{tx.hash.slice(0, 10)}...</div>
+                  <div className={styles['tx-hash']}>
+                    {tx.hash.slice(0, 10)}...
+                  </div>
                 </div>
                 <div className={styles['tx-right']}>
                   <div className={styles['tx-value']}>{tx.value} ETH</div>
-                  <div className={`${styles['tx-status']} ${styles[tx.status] ?? ''}`}>
+                  <div
+                    className={`${styles['tx-status']} ${styles[tx.status] ?? ''}`}
+                  >
                     {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
                   </div>
                 </div>

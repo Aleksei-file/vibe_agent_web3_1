@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import type { Asset } from '../types';
 import styles from './YieldFarming.module.less';
 
@@ -49,7 +48,9 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
             >
               <div className={styles['asset-header']}>
                 <span className={styles['symbol']}>{asset.symbol}</span>
-                {asset.apy && <span className={styles['apy']}>APY: {asset.apy}%</span>}
+                {asset.apy && (
+                  <span className={styles['apy']}>APY: {asset.apy}%</span>
+                )}
               </div>
               <div className={styles['asset-balance']}>
                 <span>
@@ -57,7 +58,9 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
                 </span>
               </div>
               {asset.stakedAmount && (
-                <div className={styles['staked']}>Staked: {asset.stakedAmount}</div>
+                <div className={styles['staked']}>
+                  Staked: {asset.stakedAmount}
+                </div>
               )}
             </div>
           )

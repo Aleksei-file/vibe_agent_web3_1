@@ -25,7 +25,9 @@ export const AccountOverview = ({
       <div className={styles['info-box']}>
         <div className={styles['info-item']}>
           <span className={styles['label']}>Address:</span>
-          <span className={styles['value']}>{account.ensName || shortAddress}</span>
+          <span className={styles['value']}>
+            {account.ensName || shortAddress}
+          </span>
         </div>
         <div className={styles['info-item']}>
           <span className={styles['label']}>Balance:</span>

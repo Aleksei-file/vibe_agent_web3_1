@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { WalletConnect } from './components/WalletConnect';
 import ThemeToggle from './components/ThemeToggle';
-import { AccountOverview } from './components/AccountOverview';
-import { YieldFarming } from './components/YieldFarming';
-import { TransactionFeed } from './components/TransactionFeed';
-import { mockAssets, mockTransactions } from './mocks';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import type { Account } from './types';
 import './styles/App.less';
+
+const Dashboard = lazy(
+  (): Promise<{ default: React.ComponentType<any> }> =>
+    import('./components/Dashboard')
+);
 
 function App() {
   const [account, setAccount] = useState<Account | null>(null);
@@ -30,19 +32,11 @@ function App() {
 
       <main className="app-main">
         {account?.isConnected ? (
-          <div className="dashboard">
-            <section className="account-section">
-              <AccountOverview account={account} />
-            </section>
-
-            <section className="yield-section">
-              <YieldFarming assets={mockAssets} />
-            </section>
-
-            <section className="transactions-section">
-              <TransactionFeed transactions={mockTransactions} />
-            </section>
-          </div>
+          <ErrorBoundary>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Dashboard account={account} />
+            </Suspense>
+          </ErrorBoundary>
         ) : (
           <div className="empty-state">
             <div className="empty-content">
