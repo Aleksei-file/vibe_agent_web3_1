@@ -10,13 +10,13 @@ interface WalletConnectProps {
 export const WalletConnect = ({
   onConnect,
   isConnected,
-}: WalletConnectProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+}: WalletConnectProps): JSX.Element => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleConnect = async () => {
+  const handleConnect = async (): Promise<void> => {
     setIsLoading(true);
     // Simulate wallet connection delay
-    setTimeout(() => {
+    setTimeout((): void => {
       const mockAccount: Account = {
         address: '0x1234567890123456789012345678901234567890',
         balance: '5.5',
@@ -29,7 +29,7 @@ export const WalletConnect = ({
     }, 1000);
   };
 
-  const handleDisconnect = () => {
+  const handleDisconnect = (): void => {
     onConnect({
       address: '',
       balance: '',

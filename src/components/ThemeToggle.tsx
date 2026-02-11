@@ -10,7 +10,9 @@ export const ThemeToggle = (): JSX.Element => {
     <div className="theme-toggle">
       <select
         value={theme}
-        onChange={(e) => setTheme(e.target.value as Theme)}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>): void =>
+          setTheme(e.target.value as Theme)
+        }
         aria-label="Select theme"
       >
         <option value="light">Light</option>

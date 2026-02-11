@@ -5,7 +5,9 @@ interface AccountOverviewProps {
   account: Account | null;
 }
 
-export const AccountOverview = ({ account }: AccountOverviewProps) => {
+export const AccountOverview = ({
+  account,
+}: AccountOverviewProps): JSX.Element => {
   if (!account || !account.isConnected) {
     return (
       <div className="account-overview">

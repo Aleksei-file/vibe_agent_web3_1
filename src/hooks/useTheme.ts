@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import type { Theme } from '../types';
 
-export const useTheme = (): { theme: Theme; setTheme: (theme: Theme) => void } => {
+export const useTheme = (): {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+} => {
   // Initialising localStorage settings
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [theme, setTheme] = useState<Theme>((): Theme => {
     const saved = localStorage.getItem('app-theme') as Theme | null;
     if (saved) return saved as Theme;
 
@@ -13,7 +16,7 @@ export const useTheme = (): { theme: Theme; setTheme: (theme: Theme) => void } =
       : 'light';
   });
 
-  useEffect(() => {
+  useEffect((): void => {
     // Changing the theme attribute on the root element
     const root = window.document.documentElement;
     root.setAttribute('data-theme', theme);
