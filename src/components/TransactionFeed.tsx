@@ -1,5 +1,5 @@
 import type { Transaction } from '../types';
-import '../styles/TransactionFeed.less';
+import styles from './TransactionFeed.module.less';
 
 interface TransactionFeedProps {
   transactions: Transaction[];
@@ -44,28 +44,28 @@ export const TransactionFeed = ({
   transactions,
 }: TransactionFeedProps): JSX.Element => {
   return (
-    <div className="transaction-feed">
+    <div className={styles['transaction-feed']}>
       <h3>Recent Transactions</h3>
-      <div className="transactions-list">
+      <div className={styles['transactions-list']}>
         {transactions.length === 0 ? (
-          <p className="empty-state">No transactions yet</p>
+          <p className={styles['empty-state']}>No transactions yet</p>
         ) : (
           transactions.map(
             (tx: Transaction): JSX.Element => (
               <div
                 key={tx.id}
-                className={`transaction-item ${getStatusColor(tx.status)}`}
+                className={`${styles['transaction-item']} ${styles[getStatusColor(tx.status)] ?? ''}`}
               >
-                <div className="tx-left">
-                  <div className="tx-type">{getTypeLabel(tx.type)}</div>
-                  <div className="tx-time">{formatTime(tx.timestamp)}</div>
+                <div className={styles['tx-left']}>
+                  <div className={styles['tx-type']}>{getTypeLabel(tx.type)}</div>
+                  <div className={styles['tx-time']}>{formatTime(tx.timestamp)}</div>
                 </div>
-                <div className="tx-center">
-                  <div className="tx-hash">{tx.hash.slice(0, 10)}...</div>
+                <div className={styles['tx-center']}>
+                  <div className={styles['tx-hash']}>{tx.hash.slice(0, 10)}...</div>
                 </div>
-                <div className="tx-right">
-                  <div className="tx-value">{tx.value} ETH</div>
-                  <div className={`tx-status ${tx.status}`}>
+                <div className={styles['tx-right']}>
+                  <div className={styles['tx-value']}>{tx.value} ETH</div>
+                  <div className={`${styles['tx-status']} ${styles[tx.status] ?? ''}`}>
                     {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
                   </div>
                 </div>

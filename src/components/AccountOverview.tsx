@@ -1,5 +1,5 @@
 import type { Account } from '../types';
-import '../styles/AccountOverview.less';
+import styles from './AccountOverview.module.less';
 
 interface AccountOverviewProps {
   account: Account | null;
@@ -10,8 +10,8 @@ export const AccountOverview = ({
 }: AccountOverviewProps): JSX.Element => {
   if (!account || !account.isConnected) {
     return (
-      <div className="account-overview">
-        <div className="info-box">
+      <div className={styles['account-overview']}>
+        <div className={styles['info-box']}>
           <p>No wallet connected</p>
         </div>
       </div>
@@ -21,19 +21,19 @@ export const AccountOverview = ({
   const shortAddress = `${account.address.slice(0, 6)}...${account.address.slice(-4)}`;
 
   return (
-    <div className="account-overview">
-      <div className="info-box">
-        <div className="info-item">
-          <span className="label">Address:</span>
-          <span className="value">{account.ensName || shortAddress}</span>
+    <div className={styles['account-overview']}>
+      <div className={styles['info-box']}>
+        <div className={styles['info-item']}>
+          <span className={styles['label']}>Address:</span>
+          <span className={styles['value']}>{account.ensName || shortAddress}</span>
         </div>
-        <div className="info-item">
-          <span className="label">Balance:</span>
-          <span className="value">{account.balance} ETH</span>
+        <div className={styles['info-item']}>
+          <span className={styles['label']}>Balance:</span>
+          <span className={styles['value']}>{account.balance} ETH</span>
         </div>
-        <div className="info-item">
-          <span className="label">Network:</span>
-          <span className="value">Ethereum Mainnet</span>
+        <div className={styles['info-item']}>
+          <span className={styles['label']}>Network:</span>
+          <span className={styles['value']}>Ethereum Mainnet</span>
         </div>
       </div>
     </div>

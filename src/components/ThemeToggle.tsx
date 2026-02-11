@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '../hooks/useTheme';
 import type { Theme } from '../types';
-import '../styles/WalletConnect.less';
 
 export const ThemeToggle = (): JSX.Element => {
   const { theme, setTheme } = useTheme();

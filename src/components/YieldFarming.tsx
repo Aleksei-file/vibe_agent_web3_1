@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import type { Asset } from '../types';
-import '../styles/YieldFarming.less';
+import styles from './YieldFarming.module.less';
 
 interface YieldFarmingProps {
   assets: Asset[];
@@ -37,27 +37,27 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
   };
 
   return (
-    <div className="yield-farming">
+    <div className={styles['yield-farming']}>
       <h3>Yield Farming</h3>
-      <div className="assets-list">
+      <div className={styles['assets-list']}>
         {assets.map(
           (asset: Asset): JSX.Element => (
             <div
               key={asset.id}
-              className={`asset-card ${selectedAsset?.id === asset.id ? 'selected' : ''}`}
+              className={`${styles['asset-card']} ${selectedAsset?.id === asset.id ? styles['selected'] : ''}`}
               onClick={(): void => setSelectedAsset(asset)}
             >
-              <div className="asset-header">
-                <span className="symbol">{asset.symbol}</span>
-                {asset.apy && <span className="apy">APY: {asset.apy}%</span>}
+              <div className={styles['asset-header']}>
+                <span className={styles['symbol']}>{asset.symbol}</span>
+                {asset.apy && <span className={styles['apy']}>APY: {asset.apy}%</span>}
               </div>
-              <div className="asset-balance">
+              <div className={styles['asset-balance']}>
                 <span>
                   {asset.balance} {asset.symbol}
                 </span>
               </div>
               {asset.stakedAmount && (
-                <div className="staked">Staked: {asset.stakedAmount}</div>
+                <div className={styles['staked']}>Staked: {asset.stakedAmount}</div>
               )}
             </div>
           )
@@ -65,7 +65,7 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
       </div>
 
       {selectedAsset && (
-        <div className="farming-form">
+        <div className={styles['farming-form']}>
           <h4>Stake {selectedAsset.symbol}</h4>
           <input
             type="number"
@@ -74,18 +74,18 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
               setAmount(e.target.value)
             }
-            className="amount-input"
+            className={styles['amount-input']}
           />
-          <div className="button-group">
+          <div className={styles['button-group']}>
             <button
-              className="approve-btn"
+              className={styles['approve-btn']}
               onClick={handleApprove}
               disabled={approvalPending || !amount}
             >
               {approvalPending ? 'Approving...' : 'Approve'}
             </button>
             <button
-              className="deposit-btn"
+              className={styles['deposit-btn']}
               onClick={handleDeposit}
               disabled={depositPending || !amount}
             >

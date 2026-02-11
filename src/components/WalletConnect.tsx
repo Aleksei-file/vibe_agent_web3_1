@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Account } from '../types';
-import '../styles/WalletConnect.less';
+import styles from './WalletConnect.module.less';
 
 interface WalletConnectProps {
   onConnect: (account: Account) => void;
@@ -39,17 +39,17 @@ export const WalletConnect = ({
   };
 
   return (
-    <div className="wallet-connect">
+    <div className={styles['wallet-connect']}>
       {!isConnected ? (
         <button
-          className="connect-btn"
+          className={styles['connect-btn']}
           onClick={handleConnect}
           disabled={isLoading}
         >
           {isLoading ? 'Connecting...' : 'Connect Wallet'}
         </button>
       ) : (
-        <button className="disconnect-btn" onClick={handleDisconnect}>
+        <button className={styles['disconnect-btn']} onClick={handleDisconnect}>
           Disconnect
         </button>
       )}
