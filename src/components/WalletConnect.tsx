@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Account } from '../types';
 import styles from './WalletConnect.module.less';
 
@@ -12,6 +13,7 @@ const WalletConnect = ({
   isConnected,
 }: WalletConnectProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleConnect = async (): Promise<void> => {
     setIsLoading(true);
@@ -46,11 +48,11 @@ const WalletConnect = ({
           onClick={handleConnect}
           disabled={isLoading}
         >
-          {isLoading ? 'Connecting...' : 'Connect Wallet'}
+          {isLoading ? t('connecting') : t('connect_wallet')}
         </button>
       ) : (
         <button className={styles['disconnect-btn']} onClick={handleDisconnect}>
-          Disconnect
+          {t('disconnect')}
         </button>
       )}
     </div>

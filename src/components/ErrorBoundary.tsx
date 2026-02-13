@@ -1,8 +1,9 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import styles from './ErrorBoundary.module.less';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-interface Props {
+interface Props extends WithTranslation {
   children: ReactNode;
 }
 
@@ -39,12 +40,13 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   render(): ReactNode {
     if (this.state.hasError) {
+      const { t } = this.props;
       return (
         <div className={styles.errorContainer}>
           <div className={styles.errorContent}>
-            <h1 className={styles.errorTitle}>⚠️ Something went wrong</h1>
+            <h1 className={styles.errorTitle}>{`⚠️ ${t('error_title')}`}</h1>
             <p className={styles.errorMessage}>
-              We're sorry, an unexpected error occurred.
+              {t('error_message')}
             </p>
           </div>
         </div>
@@ -55,4 +57,4 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 }
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

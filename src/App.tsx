@@ -36,37 +36,35 @@ function App() {
       <main className="app-main">
         {account?.isConnected ? (
           <ErrorBoundary>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>{t('loading')}</div>}>
               <Dashboard account={account} />
             </Suspense>
           </ErrorBoundary>
         ) : (
           <div className="empty-state">
             <div className="empty-content">
-              <h2>Welcome to DeFi Insight Dashboard</h2>
-              <p>
-                Connect your wallet to get started exploring DeFi opportunities
-              </p>
+              <h2>{t('welcome')}</h2>
+              <p>{t('connect_to_start')}</p>
               <div className="features-grid">
                 <div className="feature">
-                  <span>👛</span>
-                  <h3>Wallet Connection</h3>
-                  <p>Connect MetaMask or WalletConnect</p>
+                  <span>💻</span>
+                  <h3>{t('wallet_connection')}</h3>
+                  <p>{t('connect_metamask')}</p>
                 </div>
                 <div className="feature">
                   <span>📊</span>
-                  <h3>Account Overview</h3>
-                  <p>View your assets and balances</p>
+                  <h3>{t('account_overview')}</h3>
+                  <p>{t('view_assets')}</p>
                 </div>
                 <div className="feature">
                   <span>🎯</span>
-                  <h3>Yield Farming</h3>
-                  <p>Stake tokens and earn rewards</p>
+                  <h3>{t('yield_farming_feature')}</h3>
+                  <p>{t('stake_tokens')}</p>
                 </div>
                 <div className="feature">
                   <span>📝</span>
-                  <h3>Transactions</h3>
-                  <p>Track your transaction history</p>
+                  <h3>{t('transactions')}</h3>
+                  <p>{t('track_history')}</p>
                 </div>
               </div>
             </div>

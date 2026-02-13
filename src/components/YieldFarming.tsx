@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Asset } from '../types';
 import styles from './YieldFarming.module.less';
 
@@ -11,6 +12,7 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
   const [amount, setAmount] = useState<string>('');
   const [approvalPending, setApprovalPending] = useState<boolean>(false);
   const [depositPending, setDepositPending] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleApprove = async (): Promise<void> => {
     if (!selectedAsset) return;
@@ -37,7 +39,7 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
 
   return (
     <div className={styles['yield-farming']}>
-      <h3>Yield Farming</h3>
+      <h3>{t('yield_farming')}</h3>
       <div className={styles['assets-list']}>
         {assets.map(
           (asset: Asset): JSX.Element => (
@@ -49,7 +51,7 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
               <div className={styles['asset-header']}>
                 <span className={styles['symbol']}>{asset.symbol}</span>
                 {asset.apy && (
-                  <span className={styles['apy']}>APY: {asset.apy}%</span>
+                  <span className={styles['apy']}>{t('apy', { apy: asset.apy })}</span>
                 )}
               </div>
               <div className={styles['asset-balance']}>
@@ -59,7 +61,7 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
               </div>
               {asset.stakedAmount && (
                 <div className={styles['staked']}>
-                  Staked: {asset.stakedAmount}
+                  {t('staked_amount', { amount: asset.stakedAmount })}
                 </div>
               )}
             </div>
@@ -69,10 +71,10 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
 
       {selectedAsset && (
         <div className={styles['farming-form']}>
-          <h4>Stake {selectedAsset.symbol}</h4>
+          <h4>{t('stake', { symbol: selectedAsset.symbol })}</h4>
           <input
             type="number"
-            placeholder={`Enter amount to stake`}
+            placeholder={t('enter_amount')}
             value={amount}
             onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
               setAmount(e.target.value)
@@ -85,14 +87,14 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
               onClick={handleApprove}
               disabled={approvalPending || !amount}
             >
-              {approvalPending ? 'Approving...' : 'Approve'}
+              {approvalPending ? t('approving') : t('approve')}
             </button>
             <button
               className={styles['deposit-btn']}
               onClick={handleDeposit}
               disabled={depositPending || !amount}
             >
-              {depositPending ? 'Depositing...' : 'Deposit'}
+              {depositPending ? t('depositing') : t('deposit')}
             </button>
           </div>
         </div>

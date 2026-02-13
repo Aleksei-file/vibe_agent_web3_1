@@ -1,5 +1,6 @@
 import type { Transaction } from '../types';
 import styles from './TransactionFeed.module.less';
+import { useTranslation } from 'react-i18next';
 
 interface TransactionFeedProps {
   transactions: Transaction[];
@@ -18,24 +19,24 @@ const getStatusColor = (status: string): string => {
   }
 };
 
-const formatTime = (timestamp: number): string => {
+const formatTime = (timestamp: number, t: any): string => {
   const now = Date.now();
   const diff = now - timestamp;
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
 
-  if (hours < 1) return 'Just now';
-  if (hours < 24) return `${hours}h ago`;
-  if (days < 7) return `${days}d ago`;
+  if (hours < 1) return t('just_now');
+  if (hours < 24) return t('hours_ago', { count: hours });
+  if (days < 7) return t('days_ago', { count: days });
   return new Date(timestamp).toLocaleDateString();
 };
 
-const getTypeLabel = (type: string): string => {
+const getTypeLabel = (type: string, t: any): string => {
   const labels: Record<string, string> = {
-    send: '📤 Sent',
-    receive: '📥 Received',
-    stake: '🔒 Staked',
-    unstake: '🔓 Unstaked',
+    send: `📤 ${t('sent')}`,
+    receive: `📥 ${ t('received')}`,
+    stake: `🔒 ${ t('staked')}`,
+    unstake: `🔓 ${ t('unstaked')}`,
   };
   return labels[type] || type;
 };
@@ -43,12 +44,13 @@ const getTypeLabel = (type: string): string => {
 const TransactionFeed = ({
   transactions,
 }: TransactionFeedProps): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <div className={styles['transaction-feed']}>
-      <h3>Recent Transactions</h3>
+      <h3>{t('recent_transactions')}</h3>
       <div className={styles['transactions-list']}>
         {transactions.length === 0 ? (
-          <p className={styles['empty-state']}>No transactions yet</p>
+          <p className={styles['empty-state']}>{t('no_transactions')}</p>
         ) : (
           transactions.map(
             (tx: Transaction): JSX.Element => (
@@ -58,10 +60,10 @@ const TransactionFeed = ({
               >
                 <div className={styles['tx-left']}>
                   <div className={styles['tx-type']}>
-                    {getTypeLabel(tx.type)}
+                    {getTypeLabel(tx.type, t)}
                   </div>
                   <div className={styles['tx-time']}>
-                    {formatTime(tx.timestamp)}
+                    {formatTime(tx.timestamp, t)}
                   </div>
                 </div>
                 <div className={styles['tx-center']}>
