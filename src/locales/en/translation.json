@@ -38,5 +38,9 @@
     "transactions": "Transactions",
     "track_history": "Track your transaction history",
     "error_title": "Something went wrong",
-    "error_message": "We're sorry, an unexpected error occurred."
+    "error_message": "We're sorry, an unexpected error occurred.",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "theme_sepia": "Sepia",
+    "theme_select": "Select theme"
 }

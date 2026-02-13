@@ -38,5 +38,9 @@
     "transactions": "Transações",
     "track_history": "Acompanhe seu histórico de transações",
     "error_title": "Algo deu errado",
-    "error_message": "Desculpe, ocorreu um erro inesperado."
+    "error_message": "Desculpe, ocorreu um erro inesperado.",
+    "theme_light": "Claro",
+    "theme_dark": "Escuro",
+    "theme_sepia": "Sépia",
+    "theme_select": "Selecionar tema"
 }

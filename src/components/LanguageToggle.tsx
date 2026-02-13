@@ -1,28 +1,29 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
+import type { IDropdownItem } from './ui/DropdownSelector';
+import DropdownSelector from './ui/DropdownSelector';
 
 type Language = 'en' | 'pt' | 'ru';
 
+const LANGUAGES: IDropdownItem<Language>[] = [
+  { value: 'en', label: 'English' },
+  { value: 'pt', label: 'Português' },
+  { value: 'ru', label: 'Русский' },
+];
+
 const LanguageToggle = (): JSX.Element => {
   const { t, i18n } = useTranslation();
-  const changeLanguage = (lngType: Language) => {
+  const changeLanguage = (lngType: Language): void => {
     i18n.changeLanguage(lngType);
   };
+
   return (
-    <div className="language-toggle">
-      <select
-        name="language"
-        value={i18n.language}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>): void =>
-          changeLanguage(e.target.value as Language)
-        }
-        aria-label={t('select_language')}
-      >
-        <option value="en">English</option>
-        <option value="pt">Português</option>
-        <option value="ru">Русский</option>
-      </select>
-    </div>
+    <DropdownSelector
+      className="language-toggle"
+      options={LANGUAGES}
+      title={t('select_language')}
+      value={i18n.language as Language}
+      onChange={changeLanguage}
+    />
   );
 };
 
