@@ -1,21 +1,21 @@
 import React from 'react';
 import type { ReactNode } from 'react';
-import styles from './ErrorBoundary.module.less';
 import { withTranslation } from 'react-i18next';
 import type { WithTranslation } from 'react-i18next';
+import styles from './ErrorBoundary.module.less';
 
-interface Props extends WithTranslation {
+interface IProps extends WithTranslation {
   children: ReactNode;
 }
 
-interface State {
+interface IState {
   hasError: boolean;
   error: Error | null;
   errorInfo: React.ErrorInfo | null;
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props: Props) {
+class ErrorBoundary extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       hasError: false,
@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     };
   }
 
-  static getDerivedStateFromError(error: Error): Partial<State> {
+  static getDerivedStateFromError(error: Error): Partial<IState> {
     return {
       hasError: true,
       error,

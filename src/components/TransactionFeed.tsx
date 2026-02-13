@@ -1,33 +1,35 @@
 import type { Transaction } from '../types';
-import styles from './TransactionFeed.module.less';
 import { useTranslation } from 'react-i18next';
+import styles from './TransactionFeed.module.less';
 
-interface TransactionFeedProps {
+interface ITransactionFeedProps {
   transactions: Transaction[];
 }
 
+const DAY_IN_MS = 86400000;
+const HOUR_IN_MS = 3600000;
+const HOUR_IN_DAY = 24;
+const DAY_IN_WEEK = 7;
+
 const getStatusColor = (status: string): string => {
-  switch (status) {
-    case 'success':
-      return 'success';
-    case 'pending':
-      return 'pending';
-    case 'failed':
-      return 'failed';
-    default:
-      return '';
-  }
+  // Status and color class colocations
+  const states: Record<string, string> = {
+    success: 'success',
+    pending: 'pending',
+    failed: 'failed',
+  };
+  return states[status] || '';
 };
 
 const formatTime = (timestamp: number, t: any): string => {
   const now = Date.now();
   const diff = now - timestamp;
-  const hours = Math.floor(diff / 3600000);
-  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor(diff / HOUR_IN_MS);
+  const days = Math.floor(diff / DAY_IN_MS);
 
   if (hours < 1) return t('just_now');
-  if (hours < 24) return t('hours_ago', { count: hours });
-  if (days < 7) return t('days_ago', { count: days });
+  if (hours < HOUR_IN_DAY) return t('hours_ago', { count: hours });
+  if (days < DAY_IN_WEEK) return t('days_ago', { count: days });
   return new Date(timestamp).toLocaleDateString();
 };
 
@@ -43,7 +45,7 @@ const getTypeLabel = (type: string, t: any): string => {
 
 const TransactionFeed = ({
   transactions,
-}: TransactionFeedProps): JSX.Element => {
+}: ITransactionFeedProps): JSX.Element => {
   const { t } = useTranslation();
   return (
     <div className={styles['transaction-feed']}>
@@ -67,7 +69,7 @@ const TransactionFeed = ({
                   </div>
                 </div>
                 <div className={styles['tx-center']}>
-                  <div className={styles['tx-hash']}>
+                  <div className={styles['tx-hash']} title={tx.hash}>
                     {tx.hash.slice(0, 10)}...
                   </div>
                 </div>

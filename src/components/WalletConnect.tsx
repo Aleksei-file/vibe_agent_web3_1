@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { Account } from '../types';
 import styles from './WalletConnect.module.less';
 
-interface WalletConnectProps {
+interface IWalletConnectProps {
   onConnect: (account: Account) => void;
   isConnected: boolean;
 }
@@ -11,7 +11,7 @@ interface WalletConnectProps {
 const WalletConnect = ({
   onConnect,
   isConnected,
-}: WalletConnectProps): JSX.Element => {
+}: IWalletConnectProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { t } = useTranslation();
 

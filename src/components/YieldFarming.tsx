@@ -76,6 +76,7 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
           <h4>{t('stake', { symbol: selectedAsset.symbol })}</h4>
           <input
             type="number"
+            min="0"
             placeholder={t('enter_amount')}
             value={amount}
             onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>

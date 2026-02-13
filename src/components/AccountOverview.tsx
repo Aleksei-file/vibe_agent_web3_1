@@ -1,12 +1,12 @@
 import type { Account } from '../types';
-import styles from './AccountOverview.module.less';
 import { useTranslation } from 'react-i18next';
+import styles from './AccountOverview.module.less';
 
-interface AccountOverviewProps {
+interface IAccountOverviewProps {
   account: Account | null;
 }
 
-const AccountOverview = ({ account }: AccountOverviewProps): JSX.Element => {
+const AccountOverview = ({ account }: IAccountOverviewProps): JSX.Element => {
   const { t } = useTranslation();
   if (!account || !account.isConnected) {
     return (
