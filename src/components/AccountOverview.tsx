@@ -40,6 +40,6 @@ const AccountOverview = ({ account }: AccountOverviewProps): JSX.Element => {
       </div>
     </div>
   );
-}
+};
 
 export default AccountOverview;

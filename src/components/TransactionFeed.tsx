@@ -34,9 +34,9 @@ const formatTime = (timestamp: number, t: any): string => {
 const getTypeLabel = (type: string, t: any): string => {
   const labels: Record<string, string> = {
     send: `📤 ${t('sent')}`,
-    receive: `📥 ${ t('received')}`,
-    stake: `🔒 ${ t('staked')}`,
-    unstake: `🔓 ${ t('unstaked')}`,
+    receive: `📥 ${t('received')}`,
+    stake: `🔒 ${t('staked')}`,
+    unstake: `🔓 ${t('unstaked')}`,
   };
   return labels[type] || type;
 };

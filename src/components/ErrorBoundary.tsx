@@ -1,7 +1,8 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import styles from './ErrorBoundary.module.less';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
+import type { WithTranslation } from 'react-i18next';
 
 interface Props extends WithTranslation {
   children: ReactNode;
@@ -45,9 +46,7 @@ class ErrorBoundary extends React.Component<Props, State> {
         <div className={styles.errorContainer}>
           <div className={styles.errorContent}>
             <h1 className={styles.errorTitle}>{`⚠️ ${t('error_title')}`}</h1>
-            <p className={styles.errorMessage}>
-              {t('error_message')}
-            </p>
+            <p className={styles.errorMessage}>{t('error_message')}</p>
           </div>
         </div>
       );

@@ -51,7 +51,9 @@ const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
               <div className={styles['asset-header']}>
                 <span className={styles['symbol']}>{asset.symbol}</span>
                 {asset.apy && (
-                  <span className={styles['apy']}>{t('apy', { apy: asset.apy })}</span>
+                  <span className={styles['apy']}>
+                    {t('apy', { apy: asset.apy })}
+                  </span>
                 )}
               </div>
               <div className={styles['asset-balance']}>
