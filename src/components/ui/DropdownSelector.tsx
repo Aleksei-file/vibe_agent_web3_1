@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import s from './DropdownSelector.module.less';
+import styles from './DropdownSelector.module.less';
 
 export interface IDropdownItem<T> {
   value: T;
@@ -42,32 +42,39 @@ const DropdownSelector = <T extends string | number>({
   }, []);
 
   return (
-    <div className={`${s.container} ${className}`} ref={rootRef} title={title}>
+    <div
+      className={`${styles.container} ${className}`}
+      ref={rootRef}
+      title={title}
+    >
       <button
         type="button"
-        className={`${s.trigger} ${isOpen && s.triggerActive}`}
+        className={`${styles.trigger} ${isOpen && styles.triggerActive}`}
         onClick={(): void => setIsOpen(!isOpen)}
       >
-        <span className={s.content}>
+        <span className={styles.content}>
           {selectedOption?.icon && (
-            <span className={s.icon}>{selectedOption.icon}</span>
+            <span className={styles.icon}>{selectedOption.icon}</span>
           )}
           {selectedOption?.label}
         </span>
-        <span className={`${s.arrow} ${isOpen && s.arrowUpside}`}>▼</span>
+        <span className={`${styles.arrow} ${isOpen && styles.arrowUpside}`}>
+          ▼
+        </span>
       </button>
 
       {isOpen && (
-        <ul className={s.dropdown}>
+        <ul className={styles.dropdown}>
           {options.map(
             (opt: IDropdownItem<T>): JSX.Element => (
               <li key={opt.value}>
                 <button
                   type="button"
-                  className={`${s.option} ${opt.value === value && s.optionSelected}`}
+                  className={`${styles.option} ${opt.value === value && styles.optionSelected}`}
                   onClick={(): void => handleSelect(opt.value)}
+                  title={opt.label}
                 >
-                  {opt.icon && <span className={s.icon}>{opt.icon}</span>}
+                  {opt.icon && <span className={styles.icon}>{opt.icon}</span>}
                   {opt.label}
                 </button>
               </li>
