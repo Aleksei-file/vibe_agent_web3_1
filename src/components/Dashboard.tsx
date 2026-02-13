@@ -1,15 +1,15 @@
-import { AccountOverview } from './AccountOverview';
-import { YieldFarming } from './YieldFarming';
-import { TransactionFeed } from './TransactionFeed';
+import AccountOverview from './AccountOverview';
+import YieldFarming from './YieldFarming';
+import TransactionFeed from './TransactionFeed';
 import { mockAssets, mockTransactions } from '../mocks';
 import type { Account } from '../types';
 import styles from './Dashboard.module.less';
 
-interface DashboardProps {
+interface IDashboardProps {
   account: Account;
 }
 
-export default function Dashboard({ account }: DashboardProps): JSX.Element {
+export default function Dashboard({ account }: IDashboardProps): JSX.Element {
   return (
     <div className={styles.dashboard}>
       <section className={styles['account-section']}>

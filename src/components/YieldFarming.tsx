@@ -6,7 +6,7 @@ interface YieldFarmingProps {
   assets: Asset[];
 }
 
-export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
+const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
   const [amount, setAmount] = useState<string>('');
   const [approvalPending, setApprovalPending] = useState<boolean>(false);
@@ -100,3 +100,5 @@ export const YieldFarming = ({ assets }: YieldFarmingProps): JSX.Element => {
     </div>
   );
 };
+
+export default YieldFarming;

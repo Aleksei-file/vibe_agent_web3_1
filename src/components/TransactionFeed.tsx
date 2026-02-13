@@ -40,7 +40,7 @@ const getTypeLabel = (type: string): string => {
   return labels[type] || type;
 };
 
-export const TransactionFeed = ({
+const TransactionFeed = ({
   transactions,
 }: TransactionFeedProps): JSX.Element => {
   return (
@@ -85,3 +85,5 @@ export const TransactionFeed = ({
     </div>
   );
 };
+
+export default TransactionFeed;

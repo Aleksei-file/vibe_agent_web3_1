@@ -5,9 +5,7 @@ interface AccountOverviewProps {
   account: Account | null;
 }
 
-export const AccountOverview = ({
-  account,
-}: AccountOverviewProps): JSX.Element => {
+const AccountOverview = ({ account }: AccountOverviewProps): JSX.Element => {
   if (!account || !account.isConnected) {
     return (
       <div className={styles['account-overview']}>
@@ -41,3 +39,5 @@ export const AccountOverview = ({
     </div>
   );
 };
+
+export default AccountOverview;

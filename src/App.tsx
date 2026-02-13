@@ -1,7 +1,9 @@
 import React, { useState, lazy, Suspense } from 'react';
-import { WalletConnect } from './components/WalletConnect';
+import WalletConnect from './components/WalletConnect';
 import ThemeToggle from './components/ThemeToggle';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import LanguageToggle from './components/LanguageToggle';
+import ErrorBoundary from './components/ErrorBoundary';
+import { useTranslation } from 'react-i18next';
 import type { Account } from './types';
 import './styles/App.less';
 
@@ -12,7 +14,7 @@ const Dashboard = lazy(
 
 function App() {
   const [account, setAccount] = useState<Account | null>(null);
-
+  const { t } = useTranslation();
   const handleConnect = (newAccount: Account) => {
     setAccount(newAccount);
   };
@@ -20,13 +22,14 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🚀 DeFi Insight Dashboard</h1>
+        <h1>🚀 {t('defi_dashboard')}</h1>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <WalletConnect
             onConnect={handleConnect}
             isConnected={account?.isConnected ?? false}
           />
           <ThemeToggle />
+          <LanguageToggle />
         </div>
       </header>
 

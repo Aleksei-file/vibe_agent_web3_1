@@ -7,7 +7,7 @@ interface WalletConnectProps {
   isConnected: boolean;
 }
 
-export const WalletConnect = ({
+const WalletConnect = ({
   onConnect,
   isConnected,
 }: WalletConnectProps): JSX.Element => {
@@ -56,3 +56,5 @@ export const WalletConnect = ({
     </div>
   );
 };
+
+export default WalletConnect;

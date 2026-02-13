@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../hooks/useTheme';
 import type { Theme } from '../types';
 
-export const ThemeToggle = (): JSX.Element => {
+const ThemeToggle = (): JSX.Element => {
   const { theme, setTheme } = useTheme();
 
   return (
