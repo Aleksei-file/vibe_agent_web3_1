@@ -5,11 +5,8 @@ import ThemeToggle from './ThemeToggle';
 describe('ThemeToggle', () => {
   test('changing selected theme and updating the root theme attribute', () => {
     render(<ThemeToggle />);
-    const button = screen.getByRole('button', { name: /theme_light/i });
-    expect(button).toBeInTheDocument();
-    fireEvent.click(button);
-    const sepiaOption = screen.getByRole('button', { name: /theme_dark/i });
-    fireEvent.click(sepiaOption);
+    fireEvent.click(screen.getByRole('button', { name: /theme_light/i }));
+    fireEvent.click(screen.getByRole('button', { name: /theme_dark/i }));
     expect(
       screen.getByRole('button', { name: /theme_dark/i })
     ).toBeInTheDocument();

@@ -12,7 +12,7 @@ describe('LanguageToggle', () => {
     expect(screen.getByTitle('select_language')).toBeInTheDocument();
   });
 
-  test('должен менять язык приложения при выборе новой опции', () => {
+  test('should change language', () => {
     const { i18n } = useTranslation();
     render(<LanguageToggle />);
     fireEvent.click(screen.getByRole('button', { name: /english/i }));

@@ -15,8 +15,9 @@ describe('DropdownSelector', () => {
       <DropdownSelector options={options} value="one" onChange={() => {}} />
     );
 
-    const button = screen.getByRole('button', { name: /option 1/i });
-    expect(button).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /option 1/i })
+    ).toBeInTheDocument();
   });
 
   test('should open the options list when clicking the trigger button', () => {
@@ -24,12 +25,9 @@ describe('DropdownSelector', () => {
       <DropdownSelector options={options} value="one" onChange={() => {}} />
     );
 
-    const button = screen.getByRole('button', { name: /option 1/i });
-    fireEvent.click(button);
-    const list = screen.getByRole('list');
-    expect(list).toBeInTheDocument();
-    const items = screen.getAllByRole('listitem');
-    expect(items).toHaveLength(options.length);
+    fireEvent.click(screen.getByRole('button', { name: /option 1/i }));
+    expect(screen.getByRole('list')).toBeInTheDocument();
+    expect(screen.getAllByRole('listitem')).toHaveLength(options.length);
   });
 
   test('should call onChange with the correct value and close the dropdown', () => {
@@ -38,13 +36,10 @@ describe('DropdownSelector', () => {
       <DropdownSelector options={options} value="one" onChange={handleChange} />
     );
 
-    const button = screen.getByRole('button', { name: /option 1/i });
-    fireEvent.click(button);
-    const secondOption = screen.getByRole('button', { name: /option 2/i });
-    fireEvent.click(secondOption);
+    fireEvent.click(screen.getByRole('button', { name: /option 1/i }));
+    fireEvent.click(screen.getByRole('button', { name: /option 2/i }));
     expect(handleChange).toHaveBeenCalledWith('two');
-    const list = screen.queryByRole('list');
-    expect(list).not.toBeInTheDocument();
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 
   test('should close dropdown on outside click', () => {
@@ -52,12 +47,9 @@ describe('DropdownSelector', () => {
       <DropdownSelector options={options} value="one" onChange={() => {}} />
     );
 
-    const button = screen.getByRole('button', { name: /option 1/i });
-    fireEvent.click(button);
+    fireEvent.click(screen.getByRole('button', { name: /option 1/i }));
     expect(screen.getByRole('list')).toBeInTheDocument();
     fireEvent.mouseDown(document.body);
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
-
-  screen.logTestingPlaygroundURL();
 });
