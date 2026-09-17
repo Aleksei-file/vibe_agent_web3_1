@@ -1,0 +1,139 @@
+@import '../styles/variables.less';
+
+.transaction-feed {
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .transactions-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--bg-light);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-bg-color);
+      border-radius: 10px;
+
+      &:hover {
+        background: var(--scrollbar-bg-color-hovered);
+      }
+    }
+  }
+
+  .transaction-item {
+    display: grid;
+    grid-template-columns: 150px 1fr 100px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--bg-light-hovered);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &.success {
+      border-left-color: var(--success-color);
+    }
+
+    &.pending {
+      border-left-color: var(--warning-color);
+      opacity: 0.7;
+    }
+
+    &.failed {
+      border-left-color: var(--danger-color);
+      opacity: 0.7;
+    }
+
+    .tx-left {
+      .tx-type {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+
+      .tx-time {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+      }
+    }
+
+    .tx-center {
+      .tx-hash {
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        word-break: break-all;
+      }
+    }
+
+    .tx-right {
+      text-align: right;
+
+      .tx-value {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+
+      .tx-status {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 0.25rem;
+        text-transform: capitalize;
+
+        &.success {
+          color: var(--success-color);
+        }
+
+        &.pending {
+          color: var(--warning-color);
+        }
+
+        &.failed {
+          color: var(--danger-color);
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+}
+
+@media (max-width: 768px) {
+  .transaction-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+    .tx-right {
+      text-align: left;
+    }
+  }
+}
